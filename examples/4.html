@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Example 1 / AngularJS Meetup 29 November</title>
-    <script>
-
-    </script>
+    <title>Example 3 / AngularJS Meetup 29 November</title>
 </head>
-<body>
+<body ng-app="app" ng-controller="MainController">
 
+I play {{game}}
+
+<script src="../js/angular.js"></script>
+<script>
+    angular.module('app', []);
+
+    function MainController($scope){
+        console.log('Hello world');
+        $scope.game = 'Counter Strike';
+    }
+    MainController['$inject'] = ['$scope'];
+</script>
 </body>
 </html>
