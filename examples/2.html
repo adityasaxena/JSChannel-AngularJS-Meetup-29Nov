@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example 2 / AngularJS Meetup 29 November</title>
+</head>
+<body ng-app="app" style="padding:50px;">
+<!-- Remove app here at first to show that we can do everything without naming the app. Then later add the script tag and custom initialization script for module to begin namespacing -->
+{{ 2 + 3}}
+<br/>
+{{ 8 / 4 }}
+<br/>
+{{ 10 * 5 }}
+<br/>
+{{ 100*100/400 + '%'}}
+<br/>
+<br/>
+<input type="text" ng-model="name"/>
+{{ "Hello " + name }}
+<br/>
+<br/>
+<input type="text" ng-model="venue" style="width:200px;" placeholder="Type here">
+<input type="text" value="{{venue}}" style="width:200px;" disabled/>
+<!-- Included at the bottom because angular has to check for ng-app to initialize -->
+<script src="../js/angular.js"></script>
+<script>
+    angular.module('app', []);
+</script>
+</body>
+</html>
