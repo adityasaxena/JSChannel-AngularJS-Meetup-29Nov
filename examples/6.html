@@ -1,9 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Example 3 / AngularJS Meetup 29 November</title>
 </head>
-<body>
+<body ng-app="app">
 
+<div ng-controller="MainController">
+    <h3>Biodata</h3>
+    <table border="1" cellpadding="5" style="border-collapse:collapse;">
+        <tbody>
+        <tr ng-repeat="bio in bios">
+            <td>
+                {{bio.name}}
+            </td>
+            <td>
+                {{bio.address}}
+            </td>
+            <td>
+                {{bio.phone}}
+            </td>
+            <td>
+                {{bio.age}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="../js/angular.js"></script>
+<script>
+    angular.module('app', []);
+
+    function MainController($scope){
+        $scope.bios = [
+            {
+                "name" : "Ganesh Gembali",
+                "address" : "10, Downing Street",
+                "phone" : "984374",
+                "age" : "45"
+            },
+            {
+                "name" : "Suman Paul",
+                "address" : "The only Pink House, Gurgaon",
+                "phone" : "98000",
+                "age" : ""
+            },
+            {
+                "name" : "Aditya Saxena",
+                "address" : "10, Mughal Gardens",
+                "phone" : "23456",
+                "age" : ""
+            },
+            {
+                "name" : "Shadab Ahmed",
+                "address" : "60, Best Bakery",
+                "phone" : "",
+                "age" : "26"
+            },
+            {
+                "name" : "Rocky Jaiswal",
+                "address" : "20, China Town",
+                "phone" : "12345",
+                "age" : "28"
+            },
+        ];
+    }
+    MainController['$inject'] = ['$scope'];
+</script>
 </body>
 </html>
