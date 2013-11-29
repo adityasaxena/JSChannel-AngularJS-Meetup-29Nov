@@ -8,6 +8,25 @@
 <div ng-controller="MainController">
     <h3>Biodata</h3>
     <table border="1" cellpadding="5" style="border-collapse:collapse;">
+        <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Date of Birth
+            </th>
+            <th>
+                 Bank Balance
+            </th>
+        </tr>
+        </thead>
         <tbody>
         <tr ng-repeat="bio in bios">
             <td>
@@ -20,7 +39,10 @@
                 {{bio.phone}}
             </td>
             <td>
-                {{bio.age}}
+                {{bio.dob}}
+            </td>
+            <td>
+                {{bio.bankBalance}}
             </td>
         </tr>
         </tbody>
@@ -37,31 +59,36 @@
                 "name" : "Ganesh Gembali",
                 "address" : "10, Downing Street",
                 "phone" : "984374",
-                "age" : "45"
+                "dob" : "45",
+                "bankBalance" : 100
             },
             {
                 "name" : "Suman Paul",
                 "address" : "The only Pink House, Gurgaon",
                 "phone" : "98000",
-                "age" : ""
+                "dob" : "",
+                "bankBalance" : 1000
             },
             {
                 "name" : "Aditya Saxena",
                 "address" : "10, Mughal Gardens",
                 "phone" : "23456",
-                "age" : ""
+                "dob" : "",
+                "bankBalance" : 200
             },
             {
                 "name" : "Shadab Ahmed",
                 "address" : "60, Best Bakery",
                 "phone" : "",
-                "age" : "26"
+                "dob" : "26",
+                "bankBalance" : 500
             },
             {
                 "name" : "Rocky Jaiswal",
                 "address" : "20, China Town",
                 "phone" : "12345",
-                "age" : "28"
+                "dob" : "28",
+                "bankBalance" : 400
             },
         ];
     }
