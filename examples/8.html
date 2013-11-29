@@ -7,6 +7,9 @@
 
 <div ng-controller="MainController">
     <h3>Biodata</h3>
+    <input type="text" placeholder="Search" ng-model="searchText.name" style="padding:5px; width:200px;"/>
+    <br/>
+    <br/>
     <table border="1" cellpadding="5" style="border-collapse:collapse; width:800px;">
         <thead>
         <tr>
@@ -31,7 +34,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="bio in bios">
+        <tr ng-repeat="bio in bios | filter:searchText">
             <td>
                 {{bio.name}}
             </td>
