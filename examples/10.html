@@ -1,9 +1,125 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Example 9 / AngularJS Meetup 29 November</title>
 </head>
-<body>
+<body ng-app="app">
 
+<div ng-controller="MainController">
+    <h3>Biodata</h3>
+    <input type="text" placeholder="Search" ng-model="searchText.name" style="padding:5px; width:200px;"/>
+    <br/>
+    <br/>
+    <table border="1" cellpadding="5" style="border-collapse:collapse; width:800px;">
+        <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Date of Birth
+            </th>
+            <th>
+                Bank Balance
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="bio in bios |filter:searchText">
+            <td>
+                {{bio.name}}
+            </td>
+            <td>
+                {{bio.address}}
+            </td>
+            <td>
+                {{bio.phone | handleEmptyFields}}
+            </td>
+            <td>
+                {{bio.dob | date:fullDate | handleEmptyFields}}
+            </td>
+            <td>
+                {{bio.bankBalance | currency:'Rs '}}
+            </td>
+            <td>
+                <button ng-click="removeBio($index, bios)">Remove</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="../js/angular.js"></script>
+<script>
+    angular.module('app', []);
+
+    angular.module('app')
+            .filter('handleEmptyFields', function(){
+                return function(input){
+                    return input ? input : '---'
+                }
+            });
+
+    angular.module('app')
+            .factory('biodata', function(){
+                console.log('retrieving from service');
+                return [
+                    {
+                        "name" : "Ganesh Gembali",
+                        "address" : "10, Downing Street",
+                        "phone" : "984374",
+                        "dob" : "1970-01-01",
+                        "bankBalance" : 100
+                    },
+                    {
+                        "name" : "Suman Paul",
+                        "address" : "The only Pink House, Gurgaon",
+                        "phone" : "98000",
+                        "dob" : "",
+                        "bankBalance" : 1000
+                    },
+                    {
+                        "name" : "Aditya Saxena",
+                        "address" : "10, Mughal Gardens",
+                        "phone" : "23456",
+                        "dob" : "",
+                        "bankBalance" : 200
+                    },
+                    {
+                        "name" : "Shadab Ahmed",
+                        "address" : "60, Best Bakery",
+                        "phone" : "",
+                        "dob" : "1982-05-10",
+                        "bankBalance" : 500
+                    },
+                    {
+                        "name" : "Rocky Jaiswal",
+                        "address" : "20, China Town",
+                        "phone" : "12345",
+                        "dob" : "1992-06-20",
+                        "bankBalance" : 400
+                    },
+                ];
+            });
+
+    function MainController($scope, biodata){
+        $scope.removeBio = function(index, bios){
+            //            bios.splice(index,1);
+            //            OR
+            $scope.bios.splice(index,1);
+        };
+        $scope.bios =  biodata;
+    }
+    MainController['$inject'] = ['$scope', 'biodata'];
+</script>
 </body>
 </html>
